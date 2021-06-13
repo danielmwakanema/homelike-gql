@@ -4,6 +4,7 @@ import { OrmModule } from './orm/orm.module';
 import { CountriesModule } from './countries/countries.module';
 import { CitiesModule } from './cities/cities.module';
 import { UsersModule } from './users/users.module';
+import { ApartmentsModule } from './apartments/apartments.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { UsersModule } from './users/users.module';
     CountriesModule,
     CitiesModule,
     UsersModule,
+    ApartmentsModule,
   ],
 })
 export class AppModule {}
