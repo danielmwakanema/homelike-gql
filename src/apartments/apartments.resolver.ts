@@ -3,6 +3,7 @@ import { ApartmentsService } from './apartments.service';
 import { Apartment } from './entities/apartment.entity';
 import { CreateApartmentInput } from './dto/create-apartment.input';
 import { UpdateApartmentInput } from './dto/update-apartment.input';
+import { ApartmentSearchInput } from './dto/apartment-search-input';
 
 @Resolver(() => Apartment)
 export class ApartmentsResolver {
@@ -16,8 +17,10 @@ export class ApartmentsResolver {
   }
 
   @Query(() => [Apartment], { name: 'apartments' })
-  findAll() {
-    return this.apartmentsService.findAll();
+  findAll(
+    @Args('apartmentSearchInput') apartmentSearchInput?: ApartmentSearchInput,
+  ) {
+    return this.apartmentsService.findAll(apartmentSearchInput);
   }
 
   @Query(() => Apartment, { name: 'apartment' })
