@@ -34,6 +34,7 @@ model Apartment {
   name      String
   lat       Float
   lon       Float
+  rooms     Int
   city      City             @relation(fields: [cityId], references: [id])
   cityId    Int
   user      User             @relation(fields: [userId], references: [id])
