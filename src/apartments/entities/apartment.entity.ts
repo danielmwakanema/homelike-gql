@@ -21,13 +21,13 @@ export class Apartment {
   rooms: number;
 
   @Field(() => User, { description: "The apartment's owner." })
-  owner: User;
+  user: User;
 
   @Exclude()
   @Field(() => Int, { description: "The apartment's owner." })
   userId: number;
 
-  @Field(() => [User])
+  @Field(() => [User], { nullable: true })
   followers?: Array<User>;
 
   @Exclude()
