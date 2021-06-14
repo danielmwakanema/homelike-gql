@@ -27,6 +27,7 @@ export class ApartmentLocationQuery {
     } ${this.distanceFilter(distance, lat, lon)}`;
   }
 
+  // todo: use geospatial types with an index
   private distanceFilter(distance: number, lat: number, lon: number): string {
     return `111.111 * DEGREES(ACOS(LEAST(1.0, COS(RADIANS(${lat})) * COS(RADIANS(lat)) * COS(RADIANS(${lon} - lon)) + SIN(RADIANS(${lat})) * SIN(RADIANS(lat))))) <= ${distance}`;
   }
