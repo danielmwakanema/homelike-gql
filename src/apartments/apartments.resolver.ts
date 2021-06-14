@@ -5,7 +5,7 @@ import { CreateApartmentInput } from './dto/create-apartment.input';
 import { UpdateApartmentInput } from './dto/update-apartment.input';
 import { ApartmentSearchInput } from './dto/apartment-search-input';
 import { GqlAuthGuard } from 'src/auth/guards/gql-auth.guard';
-import { UseGuards } from '@nestjs/common';
+import { BadRequestException, UseGuards } from '@nestjs/common';
 
 @UseGuards(GqlAuthGuard)
 @Resolver(() => Apartment)
@@ -23,6 +23,14 @@ export class ApartmentsResolver {
     @Args('apartmentSearchInput', { nullable: true })
     apartmentSearchInput?: ApartmentSearchInput,
   ) {
+    if (
+      apartmentSearchInput.distance &&
+      !(apartmentSearchInput.lat && apartmentSearchInput.lon)
+    ) {
+      throw new BadRequestException(
+        'To search by distance you must specify lat and lon.',
+      );
+    }
     return this.apartmentsService.findAll(apartmentSearchInput);
   }
 
