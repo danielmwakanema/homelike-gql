@@ -22,26 +22,28 @@ export class UsersService {
   }
 
   async favourites(id: number): Promise<Array<Apartment>> {
-    const user = await this.prismaService.user.findUnique({
-      where: { id },
-      include: {
-        favourites: { include: { apartment: { include: { city: true } } } },
-      },
+    const favourites = await this.prismaService.userFavourites.findMany({
+      where: { userId: id },
+      include: { apartment: { include: { city: true } } },
     });
-    return user.favourites.map((favourite) => favourite.apartment);
+    return favourites.map((favourite) => favourite.apartment);
   }
 
-  async addFavourite(markFavouriteInput: MarkFavouriteInput): Promise<User> {
+  async addFavourite(
+    markFavouriteInput: MarkFavouriteInput,
+  ): Promise<Array<Apartment>> {
     await this.prismaService.userFavourites.create({
       data: {
         userId: markFavouriteInput.userId,
         apartmentId: markFavouriteInput.apartmentId,
       },
     });
-    return this.prismaService.user.findUnique({
-      where: { id: markFavouriteInput.userId },
-      include: { favourites: true },
+
+    const favourites = await this.prismaService.userFavourites.findMany({
+      where: { userId: markFavouriteInput.userId },
+      include: { apartment: { include: { city: true } } },
     });
+    return favourites.map((favourite) => favourite.apartment);
   }
 
   update(id: number, updateUserInput: UpdateUserInput): Promise<User> {
