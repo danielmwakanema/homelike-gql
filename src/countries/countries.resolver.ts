@@ -3,11 +3,14 @@ import { CountriesService } from './countries.service';
 import { Country } from './entities/country.entity';
 import { CreateCountryInput } from './dto/create-country.input';
 import { UpdateCountryInput } from './dto/update-country.input';
+import { UseGuards } from '@nestjs/common';
+import { GqlAuthGuard } from 'src/auth/guards/gql-auth.guard';
 
 @Resolver(() => Country)
 export class CountriesResolver {
   constructor(private readonly countriesService: CountriesService) {}
 
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => Country)
   createCountry(
     @Args('createCountryInput') createCountryInput: CreateCountryInput,
@@ -25,6 +28,7 @@ export class CountriesResolver {
     return this.countriesService.findOne(id);
   }
 
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => Country)
   updateCountry(
     @Args('updateCountryInput') updateCountryInput: UpdateCountryInput,
@@ -35,6 +39,7 @@ export class CountriesResolver {
     );
   }
 
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => Country)
   async removeCountry(@Args('id', { type: () => Int }) id: number) {
     return this.countriesService.remove(id);
