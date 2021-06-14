@@ -22,7 +22,10 @@ export class ApartmentsService {
   }
 
   findOne(id: number): Promise<Apartment> {
-    return this.prismaService.apartment.findUnique({ where: { id } });
+    return this.prismaService.apartment.findUnique({
+      where: { id },
+      include: { city: true, user: true },
+    });
   }
 
   update(
