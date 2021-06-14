@@ -20,16 +20,16 @@ export class ApartmentSearchInput {
 
   @IsNumber()
   @IsOptional()
-  @Field(() => Int, { nullable: true })
+  @Field(() => Float, { nullable: true })
   distance: number;
 
   @IsNumber()
   @IsOptional()
-  @Field(() => Int, { nullable: true })
-  userLat: number;
+  @Field(() => Float, { nullable: true })
+  lat: number;
 
   @IsNumber()
   @IsOptional()
-  @Field(() => Int, { nullable: true })
-  userLon: number;
+  @Field(() => Float, { nullable: true })
+  lon: number;
 }
