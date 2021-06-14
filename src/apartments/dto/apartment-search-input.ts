@@ -5,31 +5,31 @@ import { IsNumber, IsOptional } from 'class-validator';
 export class ApartmentSearchInput {
   @IsNumber()
   @IsOptional()
-  @Field(() => Float)
+  @Field(() => Float, { nullable: true })
   rooms: number;
 
   @IsNumber()
   @IsOptional()
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   cityId: number;
 
   @IsNumber()
   @IsOptional()
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   countryId: number;
 
   @IsNumber()
   @IsOptional()
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   distance: number;
 
   @IsNumber()
   @IsOptional()
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   userLat: number;
 
   @IsNumber()
   @IsOptional()
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   userLon: number;
 }
