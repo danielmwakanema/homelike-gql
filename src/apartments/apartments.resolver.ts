@@ -4,11 +4,13 @@ import { Apartment } from './entities/apartment.entity';
 import { CreateApartmentInput } from './dto/create-apartment.input';
 import { UpdateApartmentInput } from './dto/update-apartment.input';
 import { ApartmentSearchInput } from './dto/apartment-search-input';
+import { GqlAuthGuard } from 'src/auth/guards/gql-auth.guard';
+import { UseGuards } from '@nestjs/common';
 
+@UseGuards(GqlAuthGuard)
 @Resolver(() => Apartment)
 export class ApartmentsResolver {
   constructor(private readonly apartmentsService: ApartmentsService) {}
-
   @Mutation(() => Apartment)
   createApartment(
     @Args('createApartmentInput') createApartmentInput: CreateApartmentInput,
