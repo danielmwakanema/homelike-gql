@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Apartment } from '@prisma/client';
 import { PrismaService } from '../orm/prisma.service';
-import { ApartmentSearchInput } from './dto/apartment-search-input';
+import { ApartmentSearchInput } from './dto/apartment-search.input';
 
 @Injectable()
 export class ApartmentLocationQuery {
