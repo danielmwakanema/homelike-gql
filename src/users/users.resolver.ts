@@ -26,7 +26,7 @@ export class UsersResolver {
     return this.usersService.favourites(id);
   }
 
-  @Mutation(() => User)
+  @Mutation(() => [Apartment])
   markFavourite(
     @Args('markFavouriteInput') markFavouriteInput: MarkFavouriteInput,
   ) {
