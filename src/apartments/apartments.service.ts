@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Apartment } from '@prisma/client';
 import { PrismaService } from '../orm/prisma.service';
 import { ApartmentLocationQuery } from './apartment-location.service';
-import { ApartmentSearchInput } from './dto/apartment-search-input';
+import { ApartmentSearchInput } from './dto/apartment-search.input';
 import { CreateApartmentInput } from './dto/create-apartment.input';
 import { UpdateApartmentInput } from './dto/update-apartment.input';
 
