@@ -18,7 +18,8 @@ export class ApartmentsResolver {
 
   @Query(() => [Apartment], { name: 'apartments' })
   findAll(
-    @Args('apartmentSearchInput') apartmentSearchInput?: ApartmentSearchInput,
+    @Args('apartmentSearchInput', { nullable: true })
+    apartmentSearchInput?: ApartmentSearchInput,
   ) {
     return this.apartmentsService.findAll(apartmentSearchInput);
   }
