@@ -1,5 +1,5 @@
 import { Field, Float, InputType, Int } from '@nestjs/graphql';
-import { IsNumber, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 @InputType()
 export class ApartmentSearchInput {
@@ -9,14 +9,9 @@ export class ApartmentSearchInput {
   rooms: number;
 
   @IsNumber()
-  @IsOptional()
-  @Field(() => Int, { nullable: true })
+  @IsNotEmpty()
+  @Field(() => Int)
   cityId: number;
-
-  @IsNumber()
-  @IsOptional()
-  @Field(() => Int, { nullable: true })
-  countryId: number;
 
   @IsNumber()
   @IsOptional()
