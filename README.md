@@ -41,7 +41,7 @@ $ npm run start:prod
 ## GRAPHQL Playground
 
 - The codebase comes with a sandbox server which can be used to verify functionality
-- This can be found at http://localhost:3000/graphql
+- This can be found [here](http://localhost:3000/graphql)
 - The server also has docs
 
 ## Test
