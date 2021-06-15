@@ -23,6 +23,7 @@ $ npm install
 $ npx prisma migrate dev --name {your-migration-name}
 # run seeds
 $ npx prisma db seed --preview-feature
+```
 
 ## Running the app
 
